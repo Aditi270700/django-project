@@ -1,0 +1,19 @@
+HI
+
+
+
+
+ {% comment %} {% if data4 %} 
+
+
+<h3>Update Table</h3>
+<form action="{% url 'update' pk=data4.id %}" method="post" enctype="multipart/form-data">
+   {% csrf_token %}
+   <input type="text" name="name" value="{{data4.stu_name}}"><br>
+   <input type="email" name="email" value="{{data4.stu_email}}" readonly><br>
+   <input type="number" name="contact" value="{{data4.stu_contact}}"><br>
+   <input type="text" name="city" value="{{data4.stu_city}}"><br>
+   <input type="submit" value="Update">
+</form>
+
+ {% endif %}   {% endcomment %}
