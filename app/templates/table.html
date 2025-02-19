@@ -1,3 +1,53 @@
+<style>
+table {
+    width: 60%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 18px;
+    text-align: left;
+}
+
+th, td {
+    padding: 12px;
+    border: 2px solid #ddd;
+}
+
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: #ddd;
+}
+
+td a {
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+
+td a[href*="update"] {
+    background-color:orange;
+    color: black;
+    padding: 5px 10px;
+}
+
+td a[href*="delete"] {
+    background-color:blue;
+    color: white;
+    padding: 5px 10px;
+}
+
+td a:hover {
+    opacity: 0.8;
+}
+</style>
+
 {% extends "dashboard.html" %}
 {% block title %} Table {% endblock %}
 {% block content %}
