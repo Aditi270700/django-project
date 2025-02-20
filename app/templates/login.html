@@ -51,7 +51,6 @@ input[type="submit"]:hover {
 {% block content %}
 
  <h1>{{msg}}</h1>
-{% comment %}<h1>this is login page</h1> {% endcomment %}
 {{msg}}
 <center>
 <form action="{% url 'login' %}" method="post" enctype="multipart/form-data">
@@ -64,5 +63,5 @@ input[type="submit"]:hover {
     <br><br>
      <input type="submit" value="login">
      </form>
-     </center>
+</center>
      {% endblock %}

@@ -11,16 +11,10 @@ def registration(request):
         print(request.FILES)
         name=request.POST.get('username')
         email=request.POST.get('email')
-        detail=request.POST.get('detail')
         phone=request.POST.get('phone')
-        dob=request.POST.get('dob')
-        subscribe=request.POST.getlist('subscribe')
-        gender=request.POST.get('gender')
         password=request.POST.get('password')
         cpassword=request.POST.get('cpassword')
-        profile_pic=request.POST.get('profile-pic')
-        resume=request.POST.get('resume')
-        print(name,email,detail,phone,dob,subscribe,gender,password,cpassword,profile_pic,resume)
+        print(name,email,phone,password,cpassword)
         user = Student.objects.filter(email=email)
         if user:
             x = "Email already exist"
@@ -28,12 +22,12 @@ def registration(request):
         else:
             pass
         if password==cpassword:
-            Student.objects.create(name=name,email=email,detail=detail,phone=phone,dob=dob,subscribe=subscribe,gender=gender,profile_pic=profile_pic,resume=resume,password=password)
+            Student.objects.create(name=name,email=email,phone=phone,password=password)
             x = "Resgistration succesfully"
             return render(request,'login.html',{'msg':x})
         else:
             x = "password and cpassword not match"
-            return render(request,'register.html',{'msg':x,'name':name,'email':email,'detail':detail,'phone':phone,'dob':dob,'subscribe':subscribe,'gender':gender,'profile_pic':profile_pic,'resume':resume,})
+            return render(request,'register.html',{'msg':x,'name':name,'email':email,'phone':phone,})
     else:
         return render(request, 'registration.html')
 def login(request):
@@ -48,26 +42,10 @@ def login(request):
             user_data={
                 'name':data.name,
                 'email':data.email,
-                'detail':data.detail,
                 'phone':data.phone,
                 'password':data.password,
-                'subscribe':data.subscribe,
-                'dob':data.dob,
-                'gender':data.gender,
-                'profile_pic':data.profile_pic,
-                'resume':data.resume
             }
             print(user_data)
-            # print(data.name)
-            # print(data.email)
-            # print(data.detail)
-            # print(data.phone)
-            # print(data.password)
-            # print(data.subscribe)
-            # print(data.dob)
-            # print(data.gender)
-            # print(data.profile_pic)
-            # print(data.resume)
             pass1 = data.password
             if pass1 == password:
                 return render(request, 'dashboard.html',{'name':data.name,'email':data.email,'data':user_data})
