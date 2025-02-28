@@ -91,9 +91,13 @@ def delete(request,pk):
 #         stu=St.objects.all()
 #         return render(request, 'table.html',{'data':stu})
 def update(request,pk):
+    
     x=St.objects.get(id=pk)
-    emp=St.objects.all()
-    return render(request,'table.html',{'data2':emp,'data4':x})
+    print(x)
+    
+    
+    
+    return render(request,'update.html',{'data4':x})
     # if request.method=="POST":
     #     x = St.objects.get(id=pk)
     #     p = request.POST.get('name')
