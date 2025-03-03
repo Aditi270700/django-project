@@ -1,7 +1,22 @@
 from django.shortcuts import render
 from .models import Student
 from .models import St
+from django.http import HttpResponse
 # Create your views here.
+def landingpage(request):
+    adminemail="admin@gmail.com"
+    adminpassword="admin"
+    email= request.POST.get('email')
+    password = request.POST.get('password')
+    if(email==adminemail and password==adminpassword):
+        return render(request,'admindashboard.html')
+    else:
+        return render(request,'landingpage.html')
+
+
+def admindashboard(request):
+    return render(request,'admindashboard.html')
+            
 def dashboard(request):
     return render(request,'dashboard.html')
 
@@ -18,7 +33,7 @@ def registration(request):
         user = Student.objects.filter(email=email)
         if user:
             x = "Email already exist"
-            return render(request, 'register.html', {'msg': x})
+            return render(request, 'registration.html', {'msg': x})
         else:
             pass
         if password==cpassword:
@@ -27,7 +42,7 @@ def registration(request):
             return render(request,'login.html',{'msg':x})
         else:
             x = "password and cpassword not match"
-            return render(request,'register.html',{'msg':x,'name':name,'email':email,'phone':phone,})
+            return render(request,'registration.html',{'msg':x,'name':name,'email':email,'phone':phone,})
     else:
         return render(request, 'registration.html')
 def login(request):
@@ -71,44 +86,21 @@ def delete(request,pk):
     stu = St.objects.all()
     return render(request, 'table.html',{'data':stu})
 
-# def edit(request,pk):
-#     data= St.objects.get(id=pk)
-#     stu=St.objects.all()
-#     return render(request, 'table.html',{'data':stu,'data1':data})
-
-# def update(request,pk):
-#     if request.method=="POST":
-#         x = St.objects.get(id=pk)
-#         p = request.POST.get('name')
-#         q = request.POST.get('email')
-#         r = request.POST.get('city')
-#         s = request.POST.get('contact')
-#         x.stu_city = r
-#         x.stu_contact = s
-#         x.stu_email = q
-#         x.stu_name = p
-#         x.save()
-#         stu=St.objects.all()
-#         return render(request, 'table.html',{'data':stu})
 def update(request,pk):
-    
+    if request.method=="POST":
+         x = St.objects.get(id=pk)
+         p = request.POST.get('name')
+         q = request.POST.get('email')
+         r = request.POST.get('city')
+         s = request.POST.get('contact')
+         x.stu_city = r
+         x.stu_contact = s
+         x.stu_email = q
+         x.stu_name = p
+         x.save()
+         stu=St.objects.all()
     x=St.objects.get(id=pk)
     print(x)
     
-    
-    
     return render(request,'update.html',{'data4':x})
-    # if request.method=="POST":
-    #     x = St.objects.get(id=pk)
-    #     p = request.POST.get('name')
-    #     q = request.POST.get('email')
-    #     r = request.POST.get('city')
-    #     s = request.POST.get('contact')
-    #     x.stu_city = r
-    #     x.stu_contact = s
-    #     x.stu_email = q
-    #     x.stu_name = p
-    #     x.save()
-    #     stu=St.objects.all()
-    #     return render(request, 'table.html',{'data4':stu})
-    # # return render(request,'table.html')
+    

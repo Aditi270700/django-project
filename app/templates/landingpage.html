@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    <style>
+       /* Global Styles */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.5;
+    background-color: #f3f3f3;
+}
+
+.container {
+    width: 500px;
+    margin: 80px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color:rgb(80, 113, 151);
+    background-color:white;
+}
+
+h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    color: #555;
+}
+
+input[type="email"], input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+select {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color:rgb(223, 233, 244);
+    color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size:20px;
+}
+
+button[type="submit"]:hover {
+    background-color:rgb(114, 137, 186);
+}
+
+.footer {
+    text-align: center;
+    color: #666;
+    margin-bottom:20px;
+}
+
+.footer b {
+    color:rgb(114,137,186);
+}
+
+/* Media Query for Responsiveness */
+
+@media only screen and (max-width: 768px) {
+    .container {
+        margin: 20px auto;
+        padding: 10px;
+    }
+    h1 {
+        font-size: 24px;
+    }
+    h2 {
+        font-size: 18px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .container {
+        margin: 10px auto;
+        padding: 5px;
+    }
+    h1 {
+        font-size: 18px;
+    }
+    h2 {
+        font-size: 14px;
+    }
+    input[type="text"], input[type="password"], select {
+        padding: 5px;
+    }
+    button[type="submit"] {
+        padding: 5px;
+    }
+}
+    </style>
+</head>
+<body>
+    <h1>Welcome to Our Signin Area</h1>
+    <div class="container">
+        <h2>Log in to Dashboard</h2>
+        {{msg}}
+        <form action="{% url 'landingpage' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for ="useremail">User Email:</label>
+            <input type="email"  name="email" placeholder="User email" value={{email}} >
+            <label for ="password">Password:</label>
+            <input type="password" name="password" placeholder="Password" value={{password}}>
+        
+            <button type="submit">Login</button>
+        </form>
+    </div>
+    <div class="footer">
+        All rights reserved by Aditi Saudagar Pvt. Ltd.<br>
+        Powered by <b>Django College Dashboard</b>
+    </div>
+</body>
+</html>
