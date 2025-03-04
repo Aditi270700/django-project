@@ -4,14 +4,23 @@ from .models import St
 from django.http import HttpResponse
 # Create your views here.
 def landingpage(request):
-    adminemail="admin@gmail.com"
-    adminpassword="admin"
+    adminemail="adity@gmail.com"
+    adminpassword="adity"
     email= request.POST.get('email')
     password = request.POST.get('password')
+    user=Student.objects.filter(email=email)
     if(email==adminemail and password==adminpassword):
         return render(request,'admindashboard.html')
-    else:
-        return render(request,'landingpage.html')
+    if user.exists():
+        data=Student.objects.get(email=email)
+        pass1=data.password
+        if password ==pass1:
+            return render(request,'userdashboard.html',{'name':data.name,'email':data.email} )
+        else:
+            return render(request,'landingpage.html',{'message':'email and password does not match'})
+    return render(request,'landingpage.html')
+    
+
 
 
 def admindashboard(request):
@@ -39,44 +48,18 @@ def registration(request):
         if password==cpassword:
             Student.objects.create(name=name,email=email,phone=phone,password=password)
             x = "Resgistration succesfully"
-            return render(request,'login.html',{'msg':x})
+            return render(request,'registration.html',{'msg':x})
         else:
             x = "password and cpassword not match"
             return render(request,'registration.html',{'msg':x,'name':name,'email':email,'phone':phone,})
     else:
         return render(request, 'registration.html')
-def login(request):
-    print(request.method)
-    if request.method == 'POST':
-        email = request.POST.get('email')
-        password = request.POST.get('password')
-        user = Student.objects.filter(email=email)
-        print(user)
-        if user:
-            data=Student.objects.get(email=email)
-            user_data={
-                'name':data.name,
-                'email':data.email,
-                'phone':data.phone,
-                'password':data.password,
-            }
-            print(user_data)
-            pass1 = data.password
-            if pass1 == password:
-                return render(request, 'dashboard.html',{'name':data.name,'email':data.email,'data':user_data})
-            else:
-                msg = "Email and password not match"
-                return render(request, 'login.html',{'msg':msg,'oldemail':email})
-        else:
-            msg = "Email id not exist"
-            return render(request,'login.html',{'msg':msg})  
-    else:
-        return render(request,'login.html')
-    
-
+def logout(request):
+    return render(request,'landingpage.html')
+   
 
 def table(request):
-    stu = St.objects.all()
+    stu = Student.objects.all()
     print(stu)
     return render(request,'table.html',{'data':stu})
 
@@ -88,18 +71,18 @@ def delete(request,pk):
 
 def update(request,pk):
     if request.method=="POST":
-         x = St.objects.get(id=pk)
+         x = Student.objects.get(id=pk)
          p = request.POST.get('name')
          q = request.POST.get('email')
-         r = request.POST.get('city')
-         s = request.POST.get('contact')
-         x.stu_city = r
-         x.stu_contact = s
-         x.stu_email = q
-         x.stu_name = p
+         r = request.POST.get('phone')
+         s = request.POST.get('password')
+         x.name = p
+         x.email = q
+         x.phone = r
+         x.password = s
          x.save()
-         stu=St.objects.all()
-    x=St.objects.get(id=pk)
+         stu=Student.objects.all()
+    x=Student.objects.get(id=pk)
     print(x)
     
     return render(request,'update.html',{'data4':x})

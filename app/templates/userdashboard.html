@@ -1,3 +1,8 @@
+hello  welcome to user dashboard {{name}} <br>
+{{email}}
+
+
+{% comment %} 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,14 +15,7 @@ body {
     margin: 0;
     padding: 0;
 }
-/* .dash{
-height: 100vh;
-width: 100wh;
-background-image: url('https://img.freepik.com/free-vector/vector-technology-abstract-background-with-particle-lines_53876-111549.jpg');
-background-size: cover;
-background-repeat: no-repeat;
-position: relative;
-} */
+
 
 
 .sidebar {
@@ -135,24 +133,24 @@ main {
 <li><a href={% url 'dashboard' %}>Dashboard</a></li>
 </div>
 <div class="fire">
-<li><a href={% url 'registration' %}>Registration</a></li>
+<li><a href={% url 'registration' %}>your profile</a></li>
 </div>
 <div class="fire">
-<li><a href={% url 'login' %}>Login</a></li>
+<li><a href={% url 'login' %}>Logout</a></li>
 </div>
- <div class="fire">
+  <div class="fire">
 <li><a href={% url 'table' %}>Table</a></li>
 </div>
 <div class="fire">
 <li>Update</li>
-</div> 
+</div>  
 </ul>
 </div>
  <main>
 <header class="topbar">
-<h1>Dashboard</h1>
+<h1>{{name}}</h1>
 <div class="user-info">
-<span class="user-name"><h2>Aditi Saudagar</h2></span>
+<span class="user-name"><h2>{{email}}</h2></span>
 </div>
 </header>
 <section class="content">
@@ -163,4 +161,4 @@ main {
 {% block content %}
 {% endblock %}
 </body>
-</html>
+</html>  {% endcomment %}

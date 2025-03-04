@@ -11,9 +11,8 @@ class Student(models.Model):
     #     return self.email
 
 class St(models.Model):
-    stu_name = models.CharField(max_length=50)
-    stu_email = models.EmailField()
-    stu_contact = models.IntegerField()
-    stu_city = models.CharField(max_length=50)
-    def __str__(self):
-        return self.stu_name
+    admin_name = models.CharField(max_length=50)
+    admin_email = models.EmailField()
+    admin_pass=models.CharField(max_length=50)
+    
+    

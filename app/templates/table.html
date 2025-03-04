@@ -1,3 +1,11 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %} display user{% endblock %}
+
+
+{% block content %}
+
+
 <style>
 table {
     width: 60%;
@@ -48,9 +56,7 @@ td a:hover {
 }
 </style>
 
-{% extends "dashboard.html" %}
-{% block title %} Table {% endblock %}
-{% block content %}
+
 <center>
 <table border='2'>
 <tr>
@@ -58,7 +64,7 @@ td a:hover {
 <th>Student Name</th>
 <th>Student Email</th>
 <th>Student Contact</th>
-<th>Student City</th>
+
 <th>Edit</th>
 <th>Delete</th>
 </tr>
@@ -66,12 +72,13 @@ td a:hover {
 {% for i in data %}
 <tr>
 <td>{{forloop.counter}}</td>
-<td>{{i.stu_name}}</td>
-<td>{{i.stu_email}}</td>
-<td>{{i.stu_contact}}</td>
-<td>{{i.stu_city}}</td>
+<td>{{i.name}}</td>
+<td>{{i.email}}</td>
+<td>{{i.phone}}</td>
+
 {% comment %} <td><a href="{% url 'update' pk=i.id %}">Edit</a></td>              {% endcomment %}
-<td><a href="{% url 'update' pk=i.id%}">Edit</a></td>             
+<td><a href="{% url 'update' pk=i.id%}">Edit</a></td>
+             
 <td><a href="{% url 'delete' pk=i.id %}">Delete</a></td>
 </tr>
 {% endfor %}

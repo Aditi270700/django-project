@@ -1,18 +1,11 @@
-{% extends "base.html" %}
-{% load static %}
-{% block title %}Admindashboard{% endblock %}
-{% block content %}
-
-{% endblock %}
-
-
-
-{% comment %} <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sidebar Navigation</title>
+    <title>{% block title %}Admin Dashboard {% endblock %}</title>
+
+
     <style>
 body {
     font-family: Arial, sans-serif;
@@ -137,7 +130,7 @@ main {
 <li><a href={% url 'registration' %}>Registration</a></li>
 </div>
 <div class="fire">
-<li><a href={% url 'login' %}>Login</a></li>
+<li><a href={% url 'logout' %}>Logout</a></li>
 </div>
  <div class="fire">
 <li><a href={% url 'table' %}>Table</a></li>
@@ -162,4 +155,4 @@ main {
 {% block content %}
 {% endblock %}
 </body>
-</html> {% endcomment %}
+</html>

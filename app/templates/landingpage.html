@@ -123,9 +123,12 @@ button[type="submit"]:hover {
     </style>
 </head>
 <body>
+
+    
     <h1>Welcome to Our Signin Area</h1>
     <div class="container">
         <h2>Log in to Dashboard</h2>
+        <h2>{{message}}</h2>
         {{msg}}
         <form action="{% url 'landingpage' %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
