@@ -5,7 +5,86 @@
 
 {% endblock %}
 
+<style>
+h1{
+text-align:center;
+}
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
 
+form {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 350px;
+    text-align: left;
+    margin-top:15px;
+}
+
+form label {
+    font-weight: bold;
+    display: block;
+    margin: 10px 0 5px;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="tel"],
+form input[type="date"],
+form input[type="password"],
+form input[type="cpassword"],
+form textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+form textarea {
+    resize: vertical;
+}
+
+
+form input[type="file"] {
+    border: none;
+}
+
+form input[type="checkbox"],
+form input[type="radio"] {
+    margin-right: 5px;
+}
+
+form input[type="submit"] {
+    width: 100%;
+    background: #28a745;
+    color: white;
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+form input[type="submit"]:hover {
+    background: #218838;
+}
+
+@media (max-width: 400px) {
+    form {
+        width: 90%;
+    }
+}
+</style>
 
  <!DOCTYPE html>
 <html lang="en">
@@ -158,5 +237,29 @@ main {
 </div>
 {% comment %} {% block content %}
 {% endblock %} {% endcomment %}
+<center>
+<form action="{% url 'registration' %}" method="post" enctype="multipart/form-data">
+     {% csrf_token %}
+    <label for="username">Name:</label>
+    <input type="text" name="username" value={{name}}>
+    <br>
+    <label for="email">Email:</label>
+    <input type="email" name="email" value={{email}}>
+    <br>
+    <label for="phone">Contact:</label>
+    <input type="tel" name="phone" value={{phone}}>
+    <br>
+    <br>
+    <br>
+    <label for="password">Password:</label>
+    <input type="password" name="password" value={{password}}>
+    <br>
+    <label for="cpassword">Con_Password:</label>
+    <input type="cpassword" name="cpassword" value={{cpassword}}>
+    <br>
+    <input type="submit" value="Submit">
+
+</form>
+</center>
 </body>
 </html> 
