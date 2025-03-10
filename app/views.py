@@ -20,14 +20,11 @@ def landingpage(request):
             return render(request,'landingpage.html',{'message':'email and password does not match'})
     return render(request,'landingpage.html')
     
-
-
-
 def admindashboard(request):
     return render(request,'admindashboard.html')
             
 def dashboard(request):
-    return render(request,'dashboard.html')
+     return render(request,'dashboard.html')
 
 def registration(request):
     if request.method == 'POST':
@@ -54,6 +51,7 @@ def registration(request):
             return render(request,'registration.html',{'msg':x,'name':name,'email':email,'phone':phone,})
     else:
         return render(request, 'registration.html')
+
 def logout(request):
     return render(request,'landingpage.html')
    
@@ -64,9 +62,9 @@ def table(request):
     return render(request,'table.html',{'data':stu})
 
 def delete(request,pk):
-    data = St.objects.get(id=pk)
+    data = Student.objects.get(id=pk)
     data.delete()
-    stu = St.objects.all()
+    stu = Student.objects.all()
     return render(request, 'table.html',{'data':stu})
 
 def update(request,pk):

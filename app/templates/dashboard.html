@@ -1,9 +1,24 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}dashboard{% endblock %}
+{% block content %}
+
+{% endblock %}
+
+
+
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sidebar Navigation</title>
+    <style>
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
 }
-
 .sidebar {
     height: 100%;
     width: 250px;
@@ -54,13 +69,13 @@ main {
 }
 
 .topbar {
-    background-color:papayawhip;
+    background-color:whitesmoke;
     padding: 15px 20px;
      display: flex; 
     justify-content:space-around;
     align-items: center;
     
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 5px rgba(16, 16, 16, 0.1);
 }
 
 .topbar h1 {
@@ -107,3 +122,41 @@ main {
         margin-left: 0; 
     }
 }
+    </style>
+</head>
+<body>
+
+<div class="dash">
+<div class="sidebar">
+<h2>Admin</h2>
+<ul>
+<div class="fire">
+<li><a href={% url 'dashboard' %}>Dashboard</a></li>
+</div>
+<div class="fire">
+<li><a href={% url 'registration' %}>Registration</a></li>
+</div>
+<div class="fire">
+<li><a href={% url 'login' %}>Login</a></li>
+</div>
+ <div class="fire">
+<li><a href={% url 'table' %}>Table</a></li>
+</div>
+</ul>
+</div>
+ <main>
+<header class="topbar">
+<h1>Dashboard</h1>
+<div class="user-info">
+<span class="user-name"><h2>Aditi Saudagar</h2></span>
+</div>
+</header>
+<section class="content">
+<p>Welcome to the Admin Dashboard!</p>
+</section>
+</main>
+</div>
+{% comment %} {% block content %}
+{% endblock %} {% endcomment %}
+</body>
+</html> 

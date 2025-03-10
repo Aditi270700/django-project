@@ -7,8 +7,7 @@ class Student(models.Model):
     phone=models.IntegerField()
     password=models.CharField(max_length = 50)
     
-    # def __str__(self):
-    #     return self.email
+    
 
 class St(models.Model):
     admin_name = models.CharField(max_length=50)

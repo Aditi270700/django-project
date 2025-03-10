@@ -1,31 +1,23 @@
-hello  welcome to user dashboard {{name}} <br>
-{{email}}
-
-
-{% comment %} 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sidebar Navigation</title>
-    <style>
+<style>
+{% comment %} .dash{
+background-image:url(https://s3-alpha.figma.com/hub/file/6144433481/0f8961ee-96c8-471c-b07b-4fd51c6f3921-cover.png);
+height:100vh;
+background-repeat:no-repeat;
+width:100%;
+} {% endcomment %}
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
+font-family: Arial, sans-serif;
+margin: 0;
+padding: 0;
 }
-
-
-
 .sidebar {
-    height: 100%;
-    width: 250px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    background-color: #333;
-    padding-top: 20px;
+height: 100%;
+width: 250px;
+position: fixed;
+top: 0;
+left: 0;
+background-color: #333;
+padding-top: 20px;
 }
 
 .sidebar h2 {
@@ -68,12 +60,11 @@ main {
 }
 
 .topbar {
-    background-color:whitesmoke;
+    background-color:white;
     padding: 15px 20px;
-     display: flex; 
+    display: flex; 
     justify-content:space-around;
     align-items: center;
-    
     box-shadow: 0 2px 5px rgba(16, 16, 16, 0.1);
 }
 
@@ -122,9 +113,6 @@ main {
     }
 }
     </style>
-</head>
-<body>
-
 <div class="dash">
 <div class="sidebar">
 <h2>Admin</h2>
@@ -133,17 +121,14 @@ main {
 <li><a href={% url 'dashboard' %}>Dashboard</a></li>
 </div>
 <div class="fire">
-<li><a href={% url 'registration' %}>your profile</a></li>
+<li><a href={% url 'registration' %}>Registration</a></li>
 </div>
 <div class="fire">
-<li><a href={% url 'login' %}>Logout</a></li>
+<li><a href={% url 'logout' %}>Logout</a></li>
 </div>
-  <div class="fire">
+ <div class="fire">
 <li><a href={% url 'table' %}>Table</a></li>
 </div>
-<div class="fire">
-<li>Update</li>
-</div>  
 </ul>
 </div>
  <main>
@@ -154,11 +139,11 @@ main {
 </div>
 </header>
 <section class="content">
-<p>Welcome to the Admin Dashboard!</p>
+<p></p>
 </section>
 </main>
 </div>
 {% block content %}
 {% endblock %}
 </body>
-</html>  {% endcomment %}
+</html>

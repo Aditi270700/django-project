@@ -7,7 +7,7 @@
 
 
 
-{% comment %} <!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -131,7 +131,7 @@ main {
 <h2>Admin</h2>
 <ul>
 <div class="fire">
-<li><a href={% url 'dashboard' %}>Dashboard</a></li>
+<li><a href={% url 'admindashboard' %}>Dashboard</a></li>
 </div>
 <div class="fire">
 <li><a href={% url 'registration' %}>Registration</a></li>
@@ -142,9 +142,6 @@ main {
  <div class="fire">
 <li><a href={% url 'table' %}>Table</a></li>
 </div>
-<div class="fire">
-<li>Update</li>
-</div> 
 </ul>
 </div>
  <main>
@@ -159,7 +156,7 @@ main {
 </section>
 </main>
 </div>
-{% block content %}
-{% endblock %}
+{% comment %} {% block content %}
+{% endblock %} {% endcomment %}
 </body>
-</html> {% endcomment %}
+</html> 
